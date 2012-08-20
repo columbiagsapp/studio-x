@@ -26,7 +26,7 @@
     body {
          padding: 0; margin: 0;
       	background: {color:Background};
-      	font: 14px/20px {font:Body};
+      	font: 13px/17px {font:Body};
     }
     
     h1 { 
@@ -61,6 +61,10 @@
     
     h2 a:hover {
     	border-bottom: none;
+    }
+    
+    h2.noborder a {
+        border-bottom: none !important;
     }
     
     h3 { 
@@ -101,8 +105,7 @@
 
     }
     
-    blockquote { 
-      width: 470px; 
+    blockquote {  
       margin-left: -30px; 
       padding-left: 30px; 
       color: #222;
@@ -118,16 +121,73 @@
     ul, ol { padding-left: 0; }
     
     /* Specific elements. */
-    #sitepad {
+    #wrapper {
     	padding: 0 50px;
     }
     
-    #head {
+    #header {
     	width: 1000px;
       	margin: 60px auto 30px;
       	overflow: auto;
     }
     
+    #nav{
+    	width: 1000px;
+      	margin: 0 auto;
+      	overflow: auto;
+    }
+    
+    #headlink {
+    	float: left;
+    	margin-right: 35px;
+    }
+    
+    #logo, #logo a{
+		float: left;
+		border-bottom: none !important;
+	}
+	
+	#about {
+		float: right;
+		margin: 20px 15px;
+		width: 60px;
+		text-align: center;
+		font: bold 13px/15px {font:Body};
+		border-bottom: none !important;
+	}
+	
+	#about:hover {color: gray;}
+	
+	#vimeo {
+		float: right;
+		display:block;
+		margin:20px 40px 0 5px;
+		width: 26px;
+		height: 26px;
+		background: url("http://postfog.org/workflowtumblr/assets/vimeo_26x26.png") no-repeat 0 0;
+		text-indent: -9999px;
+		border-bottom: none !important;
+	}
+	
+	#vimeo:hover {
+		background: url("http://postfog.org/workflowtumblr/assets/vimeo_26x26.png") no-repeat 0 -26px;
+	}
+	
+	#flickr {
+		float: right;
+		display:block;
+		margin:20px 12px;
+		width: 26px;
+		height: 26px;
+		background: url("http://postfog.org/workflowtumblr/assets/flickr_26x26.png") no-repeat 0 0;
+		text-indent: -9999px;
+		border-bottom: none !important;
+	}
+	
+	#flickr:hover {
+		background: url("http://postfog.org/workflowtumblr/assets/flickr_26x26.png") no-repeat 0 -26px;
+	}
+	
     
     #main {
       width: 1000px;
@@ -164,11 +224,13 @@
     }
     
     /* Various repeated elements. */
-    
-    #headlink {
-    	float: left;
-    	margin-right: 35px;
-    }
+
+	a.follow {
+		float: right !important;
+		border-bottom: none !important;
+
+	}
+	
     
     .north-america a:hover{color: #00D6FF !important}
     .latin-america a:hover{color: #00E652 !important}
@@ -181,9 +243,29 @@
     /* Tag Colors */
     
     a.NYC {color: #00D6FF !important}
+    a.nyc {color: #00D6FF !important}
     a.Rio {color: #00E652 !important}
-
-    
+    a.rio {color: #00E652 !important}
+    a.SaoPaulo {color: #00E652 !important}
+    a.Sao-Paulo {color: #00E652 !important}
+    a.saopaulo {color: #00E652 !important}
+    a.sao-paulo {color: #00E652 !important}
+    a.amman {color: #FF00A6 !important}
+    a.Amman {color: #FF00A6 !important}
+    a.ammanlab {color: #FF00A6 !important}
+    a.amman-lab {color: #FF00A6 !important}
+    a.AmmanLab {color: #FF00A6 !important}
+    a.Amman-Lab {color: #FF00A6 !important}
+    a.mumbai {color: #FF9E00 !important}
+    a.Mumbai {color: #FF9E00 !important}
+	a.beijing {color: #FF555A !important}
+	a.Beijing {color: #FF555A !important}
+	a.tokyo {color: #FF555A !important}
+    a.Tokyo {color: #FF555A !important}
+    a.tokyolab {color: #FF555A !important}
+    a.tokyo-lab {color: #FF555A !important}
+    a.TokyoLab {color: #FF555A !important}
+    a.Tokyo-Lab {color: #FF555A !important}
      
 	.sidebar {
     	float: left;
@@ -191,7 +273,10 @@
       	font: bold 13px/17px {font:Body};
 
     }
-    
+    	
+    .tags {
+    	font-weight: bold
+    }
     
 
     .permalink {
@@ -221,7 +306,7 @@
       margin-right:25px;
       padding-top: 0; 
       margin-top: 0;
-      font: bold 13px/17px {font:Body};
+      font: bold 21px/25px {font:Body};
     }
     
     
@@ -267,7 +352,7 @@
     /* In case you want to quote in quote post, we need to distinguish
        *the* quote from any other blockquotes in the post. */
     blockquote.thequote { 
-      font-size: 1.25em; line-height: 1.3; color: #000;
+      line-height: 1.25;
     }
 
     div.text img {
@@ -345,9 +430,12 @@
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script type="text/javascript" src="http://postfog.org/workflowtumblr/assets/arrow_top.js"></script>
-<script type="text/javascript" src="http://postfog.org/assets/js/studio-x.js"></script>
 
-<script type="text/javascript" src="http://fast.fonts.com/jsapi/50b0bb29-03ef-43ec-8646-606ac8de0c78.js"></script>
+<script language="javascript" type="text/javascript" src="http://templatizer.gsappcloud.org/assets/studio-x/truncator.js"></script>
+<script type="text/javascript" src="http://templatizer.gsappcloud.org/assets/studio-x/studio-x.js"></script>
+
+
+<script type="text/javascript" src="http://fast.fonts.com/jsaheaderpi/50b0bb29-03ef-43ec-8646-606ac8de0c78.js"></script>
 
 
 
@@ -357,22 +445,32 @@
   
   
   
-  <body> 
+  <body{block:PermalinkPage} class="permalink-page"{/block:PermalinkPage}> 
   
   
-  <div id="sitepad">  
+  <div id="wrapper">  
   
-  <div id="head">
-	<a href="/"><img src="http://postfog.org/workflowtumblr/assets/studiox_logo.png"></a>
-    
-        <div id="headlink"><h2><a href="/">Global</a></h2></div>
-        <div id="headlink" class="north-america"><h2><a href="/">New York</a></h2></div>
-        <div id="headlink" class="latin-america"><h2><a href="/">Rio De Janeiro</a></h2></div>
-        <div id="headlink" class="latin-america"><h2><a href="/">São Paulo</a></h2></div>
-        <div id="headlink" class="middle-east"><h2><a href="/">Amman</a></h2></div>
-        <div id="headlink" class="south-asia"><h2><a href="/">Mumbai</a></h2></div>
-        <div id="headlink" class="asia"><h2><a href="/">Beijing</a></h2></div>
-        <div id="headlink" class="asia"><h2><a href="/">Tokyo</a></h2></div>
+  
+  
+  
+  <div id="header">
+	<a id="logo" href="/"><img src="http://postfog.org/workflowtumblr/assets/studiox_logo.png"></a>
+	
+	<a id="vimeo" target="_blank" href="http://vimeo.com/user11152188/videos">Vimeo</a>
+	<a id="flickr" target="_blank" href="http://www.flickr.com/photos/studio_x_new_york_columbia_gsapp/">Flickr</a>
+	<a id="about" target="_blank" href="http://www.arch.columbia.edu/studiox">About Studio-X</a>
+
+	    
+    <div id="nav">
+        <div id="headlink"><h2 class="noborder"><a href="http://studiox-global.tumblr.com/">Featured</a></h2></div>
+        <div id="headlink" class="north-america"><h2><a href="http://studiox-nyc.tumblr.com/">New York</a></h2></div>
+        <div id="headlink" class="latin-america"><h2><a href="http://studiox-rio.tumblr.com/">Rio De Janeiro</a></h2></div>
+        <div id="headlink" class="latin-america"><h2><a href="http://studiox-saopaulolab.tumblr.com/">São Paulo</a></h2></div>
+        <div id="headlink" class="middle-east"><h2><a href="http://studiox-ammanlab.tumblr.com/">Amman</a></h2></div>
+        <div id="headlink" class="south-asia"><h2><a href="http://studiox-mumbai.tumblr.com/">Mumbai</a></h2></div>
+        <div id="headlink" class="asia"><h2><a href="http://studiox-beijing.tumblr.com/">Beijing</a></h2></div>
+        <div id="headlink" class="asia"><h2><a href="http://studiox-tokyo.tumblr.com/">Tokyo</a></h2></div>
+        </div>
 
         
         <!-- Automatically Show Tumblr Pages, Ask & Submissions-->
@@ -385,6 +483,10 @@
         -->
     
   </div>
+  
+  
+  
+  
     
   <div id="main">
     {block:SearchPage}
@@ -410,158 +512,158 @@
 
 
     {block:Posts}
+	<div class="postwrapper">
 
-
-    {block:More}
-     <a href='{Permalink}' title='{lang:Read More}'>{lang:Read More}</a>
-	{/block:More}
-    
-    
-    {block:Link}
-    <div class="post link">
-      <div class="realpost">
-      <h2><a href="{URL}">{Name}</a></h2> 
-      {block:Description}{Description}{/block:Description}
-      </div>
-    </div>
-    {/block:Link}
-    
-    
-    
-    
-    {block:Answer}
-    <div class="post answer">
-      <div class="realpost">
-      <div class="question">{lang:Asker asked}: {Question}</div>
-      {Answer}
-      </div>
-    </div>
-    {/block:Answer}
-    
-    
-
-    
-    {block:Chat}
-    <div class="post chat">
-      <div class="realpost">
-        {block:Title}<h2><a href="{Permalink}">{Title}</a></h2>{/block:Title}
-        <ol>
-          {block:Lines}
-          <li>{block:Label}<span class="label">{Label}</span>{/block:Label}
-          {Line}</li>
-          {/block:Lines}
-        </ol>
-      </div>
-    </div>
-    {/block:Chat}
-    
-    
-    
-    
-    {block:Video}
-    <div class="post video">
-      <div class="realpost">
-      <div class="embed-container">
-      {Video-500}
-      </div>
-      </div>
-    </div>
-    {/block:Video}
-    
-
-
-   {block:Photoset}
-    <div class="post photoset">
-    	<div class="realpost">
-    	{block:Photos} 
-        <img src="{PhotoURL-HighRes}" width="675" />
-    	{/block:Photos}
-    	
-  		</div>	
-  	</div>
-    {/block:Photoset}    
-    
-    
-    
-    
-    
-    {block:Audio}
-    <div class="post audio">
-      <div class="realpost">
-      {block:IfShowAlbumArtOnAudioPosts}
-      {block:AlbumArt}
-      <img src="{AlbumArtURL}" alt="{block:Artist}{Artist}{/block:Artist}{block:TrackName} - {TrackName}{/block:TrackName}" class="album-art" />	
-{/block:AlbumArt}{/block:IfShowAlbumArtOnAudioPosts}
-      {AudioPlayerBlack}
-      {block:Caption}{Caption}{/block:Caption}
-      </div>
-    </div>
-    {/block:Audio}
-    
-    
-    
-    
-    {block:Photo} {block:HighRes} {/block:HighRes}
-    <div class="post photo">
-      <div class="realpost">
-        {LinkOpenTag}
-        <img src="{PhotoUrl-HighRes}" width="675" alt="{PhotoAlt}"/>
-        {LinkCloseTag}
-      </div>
-    </div>{/block:Photo}
-    
-    
-    
-    
-    {block:Quote}
-    <div class="post quote">
-      <div class="realpost">
-        <blockquote class="thequote">{Quote}</blockquote>
-        {block:Source}{Source}{/block:Source}
-      </div>
-    </div>{/block:Quote}
-    
-    
-    
-    
-    {block:Text}
-    <div class="post text">
-      <div class="realpost">
-        {block:Title}<h2><a href="{Permalink}">{Title}</a></h2>{/block:Title}
-        {Body}
-      </div>
-    </div>{/block:Text}
-    
-    
-    
-    
-{block:Date}
-<div class="sidebar">
-	<h3>
-	<a href="{Permalink}">{ShortMonth} {DayOfMonth}, {Year}</a></h3>
-	{block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
-      <div class="permalink">
-      
-      {block:ifShowTags}
- {block:HasTags}Tags:
-  {block:Tags}
-    <a class="{Tag}" href="{TagURL}">-{Tag}</a>&nbsp;
-  {/block:Tags}<br />
- {/block:HasTags}
-{/block:ifShowTags}   
-   
-          {block:IfDisqusShortName}{block:IfShowCommentCountOnFrontpage}<a href="{Permalink}#disqus_thread"></a><br />
-          {/block:IfShowCommentCountOnFrontpage}{/block:IfDisqusShortName}{block:IfShowNotes}{NoteCountWithLabel}{/block:IfShowNotes}<br />
-          
-{block:ifShowReblogLink}
-  <a href="{ReblogURL}">&#8634;  Reblog</a>
-{/block:ifShowReblogLink}<br />  
-      </div>
-    </div>  
-     {/block:Date}
-         
-         
-         
+		{block:More}
+		 <a href='{Permalink}' title='{lang:Read More}'>{lang:Read More}</a>
+		{/block:More}
+		
+		
+		{block:Link}
+		<div class="post link">
+		  <div class="realpost">
+		  <h2><a href="{URL}">{Name}</a></h2> 
+		  {block:Description}{Description}{/block:Description}
+		  </div>
+		</div>
+		{/block:Link}
+		
+		
+		
+		
+		{block:Answer}
+		<div class="post answer">
+		  <div class="realpost">
+		  <div class="question">{lang:Asker asked}: {Question}</div>
+		  {Answer}
+		  </div>
+		</div>
+		{/block:Answer}
+		
+		
+	
+		
+		{block:Chat}
+		<div class="post chat">
+		  <div class="realpost">
+			{block:Title}<h2><a href="{Permalink}">{Title}</a></h2>{/block:Title}
+			<ol>
+			  {block:Lines}
+			  <li>{block:Label}<span class="label">{Label}</span>{/block:Label}
+			  {Line}</li>
+			  {/block:Lines}
+			</ol>
+		  </div>
+		</div>
+		{/block:Chat}
+		
+		
+		
+		
+		{block:Video}
+		<div class="post video">
+		  <div class="realpost">
+		  <div class="embed-container">
+		  {Video-500}
+		  </div>
+		  </div>
+		</div>
+		{/block:Video}
+		
+	
+	
+	   {block:Photoset}
+		<div class="post photoset">
+			<div class="realpost">
+			{block:Photos} 
+			<img src="{PhotoURL-HighRes}" width="675" />
+			{/block:Photos}
+			
+			</div>	
+		</div>
+		{/block:Photoset}    
+		
+		
+		
+		
+		
+		{block:Audio}
+		<div class="post audio">
+		  <div class="realpost">
+		  {block:IfShowAlbumArtOnAudioPosts}
+		  {block:AlbumArt}
+		  <img src="{AlbumArtURL}" alt="{block:Artist}{Artist}{/block:Artist}{block:TrackName} - {TrackName}{/block:TrackName}" class="album-art" />	
+	{/block:AlbumArt}{/block:IfShowAlbumArtOnAudioPosts}
+		  {AudioPlayerBlack}
+		  {block:Caption}{Caption}{/block:Caption}
+		  </div>
+		</div>
+		{/block:Audio}
+		
+		
+		
+		
+		{block:Photo} {block:HighRes} {/block:HighRes}
+		<div class="post photo">
+		  <div class="realpost">
+			{LinkOpenTag}
+			<img src="{PhotoUrl-HighRes}" width="675" alt="{PhotoAlt}"/>
+			{LinkCloseTag}
+		  </div>
+		</div>{/block:Photo}
+		
+		
+		
+		
+		{block:Quote}
+		<div class="post quote">
+		  <div class="realpost">
+			<blockquote class="thequote">{Quote}</blockquote>
+			{block:Source}{Source}{/block:Source}
+		  </div>
+		</div>{/block:Quote}
+		
+		
+		
+		
+		{block:Text}
+		<div class="post text">
+		  <div class="realpost">
+			{block:Title}<h2><a href="{Permalink}">{Title}</a></h2>{/block:Title}
+			{Body}
+		  </div>
+		</div>{/block:Text}
+		
+		
+		
+		
+	{block:Date}
+	<div class="sidebar">
+		<h3><a href="{Permalink}">{ShortMonth} {DayOfMonth}, {Year}</a></h3>
+		{block:Caption}<div class="caption"><div class="caption-text">{Caption}</div></div>{/block:Caption}
+		
+	<div class="permalink">
+		<div class="tags">      
+		  {block:ifShowTags}
+	 {block:HasTags}Tags:
+	  {block:Tags}
+		<a class="{Tag}" href="{TagURL}">-{Tag}</a>&nbsp;
+	  {/block:Tags}<br />
+	 {/block:HasTags}
+	{/block:ifShowTags}   </div>
+	   
+			  {block:IfDisqusShortName}{block:IfShowCommentCountOnFrontpage}<a href="{Permalink}#disqus_thread"></a><br />
+			  {/block:IfShowCommentCountOnFrontpage}{/block:IfDisqusShortName}{block:IfShowNotes}{NoteCountWithLabel}{/block:IfShowNotes}<br />
+			  
+	{block:ifShowReblogLink}
+	  <a href="{ReblogURL}">&#8634;  Reblog</a>
+	{/block:ifShowReblogLink}<br />  
+		  </div>
+		</div>  
+		 {/block:Date}
+			 
+			 
+	</div><!-- .postwrapper --> 
     {/block:Posts}
     
    	
