@@ -22,10 +22,9 @@
 
       truncated_node.insertAfter(full_node);
       
-      
-      var permalink = $(this).parent('.sidebar').find('h3 a').attr('href');
+      var permalink = $(this).closest('.sidebar').find('h3 a').attr('href');
 	  
-      findNodeForMore(truncated_node).append('... (<a href="'+permalink+'">read more</a>)');
+      findNodeForMore(truncated_node).append('...<br><br><a class="continue-reading" href="'+permalink+'">Continue Reading</a>');
       
       /*
       findNodeForLess(full_node).append(' (<a href="#show less content">'+opts.less+'</a>)');
