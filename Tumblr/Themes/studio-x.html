@@ -8,21 +8,12 @@
     <title>{Title}{block:SearchPage}: {lang:Search results for SearchQuery}{/block:SearchPage}{block:PostSummary}: {PostSummary}{/block:PostSummary}</title>
     <!-- Default values -->
 
-    <meta name="if:Show notes" content="0">
     <meta name="text:Disqus Shortname" content="" />
-    <meta name="if:Show comment count on frontpage" content="0" />
 
 	<link type="text/css" rel="stylesheet" media="all" href="http://www.columbia.edu/cu/arch/studio-x/studio-x.css">
 
     <style>
     /* Styling based on Tumblr customizable inputs */
-    
-    
-    {block:IfShowNotes}div.realpost { margin-bottom: 6em; }{/block:IfShowNotes}
-    {block:IfShowCommentCountOnFrontpage}
-    div.realpost { margin-bottom: 6em; }
-    {block:IfShowNotes}div.realpost { margin-bottom: 7em; }{/block:IfShowNotes}
-    {/block:IfShowCommentCountOnFrontpage}
     
     {block:IfDisqusShortname}
     /* Styling for Disqus comments */
@@ -85,7 +76,7 @@
   <div id="wrapper">  
     
   <div id="header">
-	<a id="logo" href="/"><img src="http://postfog.org/workflowtumblr/assets/studiox_logo.png"></a>
+	<a id="logo" href="/"><img src="http://www.columbia.edu/cu/arch/studio-x/studiox_logo.png"></a>
 	
 	<a id="rss" target="_blank" href="http://studiox-global.tumblr.com/rss">RSS</a>
 	<a id="vimeo" target="_blank" href="http://vimeo.com/user11152188/videos">Vimeo</a>
@@ -285,7 +276,7 @@
 	  </div>
 	   
 			  {block:IfDisqusShortName}{block:IfShowCommentCountOnFrontpage}<a href="{Permalink}#disqus_thread"></a><br />
-			  {/block:IfShowCommentCountOnFrontpage}{/block:IfDisqusShortName}{block:IfShowNotes}{NoteCountWithLabel}{/block:IfShowNotes}<br />
+			  {/block:IfShowCommentCountOnFrontpage}{/block:IfDisqusShortName}{NoteCountWithLabel}<br />
 			  
 	
 	  <a href="{ReblogURL}">&#8634;  Reblog</a>
@@ -314,9 +305,7 @@
       {/block:Permalink}
     {/block:IfDisqusShortname}
     
-    {block:IfShowNotes}
     {PostNotes}
-    {/block:IfShowNotes}
     
     
  <!-- 
