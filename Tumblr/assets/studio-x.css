@@ -38,9 +38,6 @@ body {
     	border-bottom: none;
     }
     
-    h2.noborder a {
-        border-bottom: none !important;
-    }
     
     h3 { 
    		font-size: 12px; 
@@ -80,7 +77,7 @@ body {
 
     }
     
-    blockquote {  
+    .text.post blockquote, .post.quote blockquote {  
       margin-left: -30px; 
       padding-left: 30px; 
       color: #222;
@@ -181,6 +178,36 @@ body {
 		background: url("http://www.columbia.edu/cu/arch/studio-x/flickr_26x26.png") no-repeat 0 -26px;
 	}
 	
+	#facebook {
+		float: right;
+		display:block;
+		margin:20px 3px;
+		width: 26px;
+		height: 26px;
+		background: url("http://www.columbia.edu/cu/arch/studio-x/facebook_26x26.png") no-repeat 0 0;
+		text-indent: -9999px;
+		border-bottom: none !important;
+	}
+	
+	#facebook:hover {
+		background: url("http://www.columbia.edu/cu/arch/studio-x/facebook_26x26.png") no-repeat 0 -26px;
+	}
+	
+	#twitter {
+		float: right;
+		display:block;
+		margin:20px 3px;
+		width: 26px;
+		height: 26px;
+		background: url("http://www.columbia.edu/cu/arch/studio-x/twitter_26x26.png") no-repeat 0 0;
+		text-indent: -9999px;
+		border-bottom: none !important;
+	}
+	
+	#twitter:hover {
+		background: url("http://www.columbia.edu/cu/arch/studio-x/twitter_26x26.png") no-repeat 0 -26px;
+	}
+	
     
     #main {
       width: 1000px;
@@ -233,6 +260,15 @@ body {
     .europe a:hover{color: #AD20FF !important}
     .asia a:hover{color: #FF555A !important}
     
+    .north-america-active a {color: #00D6FF !important; border-bottom: none !important;}
+    .latin-america-active a {color: #00E652 !important; border-bottom: none !important;}
+    .south-asia-active a {color: #FF9E00 !important; border-bottom: none !important;}
+    .middle-east-active a {color: #FF00A6 !important; border-bottom: none !important;}
+    .africa-active a {color: #008AFF !important; border-bottom: none !important;}
+    .europe-active a {color: #AD20FF !important; border-bottom: none !important;}
+    .asia-active a {color: #FF555A !important; border-bottom: none !important;}
+    .global-active a {color: black !important; border-bottom: none !important;}
+    
     /* Tag Colors */
     
     a.NYC {color: #00D6FF !important}
@@ -265,6 +301,17 @@ body {
     	width: 250px;
       	font: bold 13px/17px 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
+    }
+
+    .sidebar blockquote{
+      padding:0;
+      margin:0;
+    }
+
+    .sidebar .tumblr_blog{
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
     	
     .tags {
