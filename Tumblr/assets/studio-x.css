@@ -299,8 +299,8 @@ body {
 	.sidebar {
     	float: left;
     	width: 250px;
-      	font: bold 13px/17px 'Helvetica Neue', Helvetica, Arial, sans-serif;
-
+      font: bold 13px/17px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      margin-bottom: 7em;
     }
 
     .sidebar blockquote{
