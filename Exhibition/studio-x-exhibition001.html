@@ -131,17 +131,11 @@
     </div></div>
     {/block:SearchPage}
     
-    
-    
-    
-    
-
-<div class = "autopagerize_page_element" >
-
-
+  
+<div class="autopagerize_page_element" >
 
     {block:Posts}
-	<div class="postwrapper">
+	<div id="post-{PostID}" class="postwrapper">
 
 		{block:More}
 		 <a href='{Permalink}' title='{lang:Read More}'>{lang:Read More}</a>
@@ -158,8 +152,6 @@
 		{/block:Link}
 		
 		
-		
-		
 		{block:Answer}
 		<div class="post answer">
 		  <div class="realpost">
@@ -168,10 +160,8 @@
 		  </div>
 		</div>
 		{/block:Answer}
-		
-		
-	
-		
+
+
 		{block:Chat}
 		<div class="post chat">
 		  <div class="realpost">
@@ -185,9 +175,7 @@
 		  </div>
 		</div>
 		{/block:Chat}
-		
-		
-		
+
 		
 		{block:Video}
 		<div class="post video">
@@ -198,8 +186,7 @@
 		  </div>
 		</div>
 		{/block:Video}
-		
-	
+
 	
 	   {block:Photoset}
 		<div class="post photoset">
@@ -214,10 +201,7 @@
 			</div>	
 		</div>
 		{/block:Photoset}    
-		
-		
-		
-		
+
 		
 		{block:Audio}
 		<div class="post audio">
@@ -231,10 +215,8 @@
 		  </div>
 		</div>
 		{/block:Audio}
-		
-		
-		
-		
+
+
 		{block:Photo} {block:HighRes} {/block:HighRes}
 		<div class="post photo">
 		  <div class="realpost">
@@ -243,9 +225,7 @@
 			{LinkCloseTag}
 		  </div>
 		</div>{/block:Photo}
-		
-		
-		
+
 		
 		{block:Quote}
 		<div class="post quote">
@@ -254,8 +234,6 @@
 			{block:Source}{Source}{/block:Source}
 		  </div>
 		</div>{/block:Quote}
-		
-		
 		
 		
 		{block:Text}
@@ -267,77 +245,46 @@
 		</div>{/block:Text}
 		
 		
-		
-		
-	{block:Date}
-	<div class="sidebar">
-		<h3><a href="{Permalink}">{ShortMonth} {DayOfMonth}, {Year}</a></h3>
-		{block:Caption}<div class="caption"><div class="caption-text">{Caption}</div></div>{/block:Caption}
-		
-	<div class="permalink">
-		<div class="tags">      
-		  
-	 {block:HasTags}Tags:
-	  {block:Tags}
-		<a class="{Tag}" href="{TagURL}">{Tag}</a>&nbsp;
-	  {/block:Tags}<br />
-	 {/block:HasTags}
-	  </div>
-	   
-			  {block:IfDisqusShortName}{block:IfShowCommentCountOnFrontpage}<a href="{Permalink}#disqus_thread"></a><br />
-			  {/block:IfShowCommentCountOnFrontpage}{/block:IfDisqusShortName}{NoteCountWithLabel}<br />
-			  
-	
-	  <a href="{ReblogURL}">&#8634;  Reblog</a>
-	<br />  
-		  </div>
-		</div>  
-		 {/block:Date}
-			 
+		<div class="sidebar">
+			{block:Date}<h3><a href="{Permalink}">{ShortMonth} {DayOfMonth}, {Year}</a></h3>{/block:Date}
+
+			{block:Caption}<div class="caption"><div class="caption-text">{Caption}</div></div>{/block:Caption}
+			
+			<div class="permalink">
+				{block:HasTags}
+				<div class="tags">Tags:
+					{block:Tags}
+					<a class="{Tag}" href="{TagURL}">{Tag}</a>&nbsp;
+			  		{/block:Tags}<br />
+			  	</div>
+				{/block:HasTags}
+
+			  	{block:IfDisqusShortName}{block:IfShowCommentCountOnFrontpage}
+			  	<a href="{Permalink}#disqus_thread"></a><br />
+			  	{/block:IfShowCommentCountOnFrontpage}{/block:IfDisqusShortName}
+
+			  	{NoteCountWithLabel}<br />
+				<a href="{ReblogURL}">&#8634;  Reblog</a><br /> 
+
+				{block:Permalink}
+			    	{PostNotes}
+					{block:IfDisqusShortname}
+				    <div id="disqus_thread">
+				    	<script type="text/javascript" src="http://disqus.com/forums/{text:Disqus Shortname}/embed.js"></script>
+				    	<noscript><a href="http://{text:Disqus Shortname}.disqus.com/?url=ref">{lang:View the discussion thread}</a></noscript>
+				    </div>
+			  		{/block:IfDisqusShortname}
+			    {/block:Permalink} 
+			</div><!-- /.permalink -->
+		</div><!-- /.sidebar -->
 			 
 	</div><!-- .postwrapper --> 
     {/block:Posts}
     
    	
-   	</div>
+</div><!-- /.autopagerize_page_element -->
 
     
-    
-    
-    {block:IfDisqusShortname}
-      {block:Permalink}
-      <div id="disqus_thread">
-      <script type="text/javascript" src="http://disqus.com/forums/{text:Disqus Shortname}/embed.js"></script>
-      <noscript><a href="http://{text:Disqus Shortname}.disqus.com/?url=ref">{lang:View the discussion thread}</a></noscript>
-      <p id="powered-by-disqus">{lang:Blog comments powered by Disqus 2}</p>
-      </div>
-      {/block:Permalink}
-    {/block:IfDisqusShortname}
-    
-    {PostNotes}
-    
-    
- <!-- 
-    {block:IndexPage}
-    {block:Pagination}
-      <div id="pager">
-      {block:NextPage}<a href="{NextPage}" id="past">&laquo; {lang:Older}</a>{/block:NextPage}
-      {block:PreviousPage}<a href="{PreviousPage}" id="future">{lang:Newer} &raquo;</a>{/block:PreviousPage}
-    </div>
-    {/block:Pagination}
-    {/block:IndexPage}
-    
-    
-    <div id="foot"> 
-    <ul id="bottom">
-      <li><a href="http://arch.columbia.edu">GSAPP</a></li> 
-
-    </ul> 
-    <form action="/search" method="get"> 
-    <input type="text" name="q" value="{lang:Search}" onclick="javascript:if (this.value == '{lang:Search}') this.value = '';"/> 
-    </form> 
-    </div>
--->    
 
   
   {block:IfDisqusShortname}
