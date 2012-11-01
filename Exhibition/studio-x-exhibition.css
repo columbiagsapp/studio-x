@@ -57,8 +57,6 @@ body {
     	
     img {
     	display: block; 
-    	margin-bottom: 20px; 
-    	margin-top: 5px; 
     	}
     	
     a { color: #0b0c0c; 
@@ -85,8 +83,6 @@ body {
       font-style: italic;
       margin-top: 0; 
     }
-    
-    div.realpost { margin-bottom: 7em; }
     
       /* for nested blockquotes */
       blockquote blockquote { margin-left: 0; }
@@ -343,16 +339,12 @@ body {
       float: left;
       width: 675px;
       max-width: 100%;
-      margin-bottom: 4em; 
       margin-right:25px;
       padding-top: 0; 
       margin-top: 0;
       font: bold 21px/25px 'Helvetica Neue', Helvetica, Arial, sans-serif;
     }
     
-    body#permalink-page div.realpost {
-      margin-bottom: 2em;
-    }
     
    
     div.audio embed { margin-top: .3em; margin-bottom: 1em; }
@@ -414,3 +406,28 @@ body {
     .photoset-carousel img{
       min-height: 450px;
     }
+
+
+
+
+    .post-content{
+      width:950px;
+    }
+    .split .post-content,
+    .split .post-content img,
+    .split .post-content iframe,
+    .split .post-content .post,
+    .split .post-content .sidebar
+    {
+      width:500px;
+      float:left;
+    }
+
+
+
+
+
+
+
+
+
