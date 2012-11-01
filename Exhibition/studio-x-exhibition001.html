@@ -132,7 +132,7 @@
     {/block:SearchPage}
     
   
-<div class="autopagerize_page_element" >
+<div id="content" class="autopagerize_page_element" >
 
     {block:Posts}
 	<div id="post-{PostID}" class="postwrapper">
@@ -262,9 +262,6 @@
 			  	{block:IfDisqusShortName}{block:IfShowCommentCountOnFrontpage}
 			  	<a href="{Permalink}#disqus_thread"></a><br />
 			  	{/block:IfShowCommentCountOnFrontpage}{/block:IfDisqusShortName}
-
-			  	{NoteCountWithLabel}<br />
-				<a href="{ReblogURL}">&#8634;  Reblog</a><br /> 
 
 				{block:Permalink}
 			    	{PostNotes}
