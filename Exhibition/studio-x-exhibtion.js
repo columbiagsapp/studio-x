@@ -8,13 +8,11 @@ $(document).ready(function () {
 	var PHOTOSET_TIMEOUT = PHOTOSET_AUTO + PHOTOSET_SPEED+INIT_TIME+FADE_TIME;
 	var MAX_POSTS = 10;
 	var attachments = new Array();
-
+	var splits = new Array();
 
 	var autoplayYoutube = function(str){
-		console.log('str: '+str);
 		var count = str.match(/youtube.com/g); //number of occurences of 'youtube.com'
-		console.log('count: '+count);
-		if(count.length > 0){
+		if(count != null){
 			
 			var idx = str.indexOf('youtube.com');
 			idx = str.indexOf('"', idx);
@@ -40,18 +38,14 @@ $(document).ready(function () {
 	 *	Initializes JCarousel on photosets
 	*/
 	$.fn.initJCarousel = function(){
-		
-			console.log('jcarousel init()');
-			$(".photoset-carousel").jCarouselLite({
-		    	visible: 1,
-		    	auto: 3000,
-		    	speed: 1000,
-		    	circular: true,
-		        btnNext: ".carousel-next",
-		        btnPrev: ".carousel-prev"
-		    });	
-		
-		
+		$(".photoset-carousel").jCarouselLite({
+	    	visible: 1,
+	    	auto: 3000,
+	    	speed: 1000,
+	    	circular: true,
+	        btnNext: ".carousel-next",
+	        btnPrev: ".carousel-prev"
+	    });	
 	}
 
 	/*
@@ -59,7 +53,7 @@ $(document).ready(function () {
 	 *	will be reattached - with .prependTo() - later when the post is visible
 	*/
 	$.fn.detachAllContent = function(){
-		$('.post-content', this).each(function(){
+		$('.post-content-container', this).each(function(){
 			attachments[$(this).closest('.postwrapper').attr('id')] = $(this).detach();
 		});
 	}
@@ -74,7 +68,6 @@ $(document).ready(function () {
 			attachments[ thisID ].find('.embed-container').each(function(){
 				var newHTML = autoplayYoutube( $(this).html() );
 				if(newHTML){
-					console.log('newHTML: '+ newHTML);
 					$(this).html( newHTML );
 				}
 			});
@@ -89,6 +82,27 @@ $(document).ready(function () {
 
 
 	var foreverPost = false;
+
+	var combineSplits = function(){
+		console.log('entering ------------------combineSplits()');
+		$('.tags a').each(function(){
+			console.log('this text() indexOf(): '+ $(this).text().indexOf('split-'));
+			if($(this).text().indexOf('split-') >= 0){
+				var className = $(this).text()+'-concat';
+
+
+				if( $( '.'+className ).length > 0 ){
+					var $that = $(this).closest('.postwrapper');
+					$(this).closest('.post-content').appendTo( $( '.'+className ).find('.post-content-container') );
+					$that.remove();
+				}else{//first such split
+					$(this).closest('.postwrapper').addClass( 'split '+className );
+				}
+			}
+		});
+	}
+
+	combineSplits();
 
 	$('.tags a').each(function(){
 		if($(this).text() == 'length-forever'){
@@ -127,7 +141,6 @@ $(document).ready(function () {
 						text = text + parseInt(INIT_TIME);//add INIT_TIME and multiply by 1000 for ms
 						
 						text = 'length-'+text;
-						console.log('i: '+i+' text: '+text);
 						$this.addClass('length '+text);
 
 						if($('.post', this).hasClass('video')){
@@ -187,7 +200,6 @@ $(document).ready(function () {
 			}
 
 			var time = postTime-FADE_TIME;
-			console.log('time: '+time);
 
 			
 			setTimeout(function(){
