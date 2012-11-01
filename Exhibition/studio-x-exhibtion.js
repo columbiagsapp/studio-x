@@ -1,108 +1,131 @@
 $(document).ready(function () {
 
+	var DEFAULT_POST_TIME = 5000;
 	var PHOTOSET_AUTO = 3000;
 	var PHOTOSET_SPEED = 1000;
-	var PHOTOSET_TIMEOUT = PHOTOSET_AUTO + PHOTOSET_SPEED;
+	var INIT_TIME = 100;//increase this for slow internet connections (should be less than FADE_TIME)
+	var FADE_TIME = 2000;
+	var PHOTOSET_TIMEOUT = PHOTOSET_AUTO + PHOTOSET_SPEED+INIT_TIME+FADE_TIME;
+	var MAX_POSTS = 10;
+	var attachments = new Array();
+
+	/*
+	 *	Detaches all embedded content, like videos, and even photosets, which
+	 *	will be reattached - with .prependTo() - later when the post is visible
+	*/
+	$.fn.detachContent = function(){
+		$('.post', this).each(function(){
+			attachments[$(this).closest('.postwrapper').attr('id')] = $(this).detach();
+		});
+	}
+
+	/*
+	 *	Initializes JCarousel on photosets
+	*/
+	$.fn.initJCarousel = function(){
+		setTimeout(function(){
+			console.log('jcarousel init()');
+			$(".photoset-carousel").jCarouselLite({
+		    	visible: 1,
+		    	auto: 3000,
+		    	speed: 1000,
+		    	circular: true,
+		        btnNext: ".carousel-next",
+		        btnPrev: ".carousel-prev"
+		    });	
+		}, INIT_TIME);
+		
+	}
+
 	/* 
 	 *	Hide all posts except the first
 	*/
 	$('.postwrapper').each(function(i){
-		console.log('i: '+i);
 		var $this = $(this);
-		if(i != 0){
-			$(this).hide();
-		}
-		var photosetLength = $('.photoset li',this).length*PHOTOSET_TIMEOUT;
-
-		if(photosetLength > 0){
-			$this.addClass('photoset-wrapper length length-'+photosetLength);
-		}
-
-		$('.tags a', this).each(function(){
-			var text = $(this).text();
-			if(text.substring(0,6) == 'length'){
-				console.log($(this).text());
-				text = text.substring(7);
-
-				$this.addClass('video-wrapper length length-'+text+'000');
-			}
-		});
-
+		$this.css('opacity', 0).hide();
 		
+		if($('.tags a', this).length > 0){
+			$('.tags a', this).each(function(){
+				var text = $(this).text();
+				if(text.substring(0,7) == 'length-'){
+					text = text.substring(7);
+					
+					text = parseInt(text)*1000;
+					text = text + parseInt(INIT_TIME);//add INIT_TIME and multiply by 1000 for ms
+					
+					text = 'length-'+text;
+					console.log('i: '+i+' text: '+text);
+					$this.addClass('length '+text);
+
+					if($('.post', this).hasClass('video')){
+						$(this).addClass('video-wrapper');
+					}else if($('.post', this).hasClass('photoset')){
+						$(this).addClass('photoset-wrapper');
+					}
+				}
+			});
+
+		}else{
+			var photosetLength = $('.photoset li',this).length*PHOTOSET_TIMEOUT + INIT_TIME;
+			if(photosetLength > INIT_TIME){
+				$this.addClass('photoset-wrapper length length-'+photosetLength);
+			}
+		}
+		
+		$this.detachContent();		
 	});
-
-	/*
-	 *	Add cycle counts to each postwrapper to know the
-	 *	number of photos in photosets	
-	*/
-
-
-	var MAX_CAPTION_LENGTH = 400;
-	var MAX_TEXTPOST_LENGTH = 500;
-	var MAX_QUOTEPOST_LENGTH = 200;
-
-	var POSTS = 10;
 	
-	var truncate = function(){
-      $('body:not(.permalink-page) .caption').truncate({max_length: MAX_CAPTION_LENGTH});
-      $('body:not(.permalink-page) .text-body').truncate({max_length: MAX_TEXTPOST_LENGTH});
-      $('body:not(.permalink-page) .post.quote .realpost').truncate({max_length: MAX_QUOTEPOST_LENGTH});
-    }
-    
-    truncate(false);
-    
-    $(window).bind("load", function() {
-    	console.log('LOADED');
-		$(document).bind('DOMNodeInserted', function(){
-			console.log('DOMNodeInserted');
-			//truncate(true);
-		});
-	});
-
-
-	$(function() {
-	    $(".photoset-carousel").jCarouselLite({
-	    	visible: 1,
-	    	auto: 3000,
-	    	speed: 1000,
-	    	circular: true,
-	        btnNext: ".carousel-next",
-	        btnPrev: ".carousel-prev"
-	    });
-	});
-
 
 
 	/*
 	 *	Functionality to cycle through posts
 	*/
-
-
 	$.fn.timeOutPost = function(idx, total){
+		console.log('');
+		console.log('------------ NEW POST #'+idx+' ----------');
 		var $this = $(this);
 		idx++;
 		if(idx > total){
 			idx = 1;
 		}
-		console.log('entering timeOutPost');
-		console.log('classes: '+$(this).attr('class') );
-		$(this).show();
 
-		var postTime = 5000;
+		if( attachments[ $(this).attr('id') ] != undefined ){
+			$(this).show();
+			attachments[ $(this).attr('id') ].prependTo(this);
+			$(this).initJCarousel();
+
+			setTimeout(function(){
+				$this.animate({
+					'opacity': 1
+				}, FADE_TIME);
+			}, INIT_TIME);
+		}
+		
+
+		var postTime = DEFAULT_POST_TIME;
 
 		if($(this).hasClass('length')){
 			var lengthClass = $(this).attr('class');
 			lengthClassIdx = lengthClass.indexOf('length-');
 			lengthClass = lengthClass.substring(lengthClassIdx+7);
 			postTime = parseInt(lengthClass);
-			console.log('new postTime: '+postTime);
 		}
 
+		var time = postTime-FADE_TIME;
+		console.log('time: '+time);
+
+		
 		setTimeout(function(){
-			console.log('hiding, postTime: '+postTime);
-			$this.hide();
-			$('.postwrapper:nth-child('+idx+')').timeOutPost(idx, total);
-		}, postTime);
+				$this.animate({
+					'opacity': 0
+				}, FADE_TIME, function(){
+					$this.find('.post').remove();//detach post content
+					$this.hide();
+					$('.postwrapper:nth-child('+idx+')').timeOutPost(idx, total);
+				});
+			}, time);
+		
+		
 	}
 
 	$('.postwrapper:nth-child(1)').timeOutPost(1, $('.postwrapper').length);
