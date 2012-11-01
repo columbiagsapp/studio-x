@@ -59,7 +59,7 @@ $(document).ready(function () {
 	 *	will be reattached - with .prependTo() - later when the post is visible
 	*/
 	$.fn.detachAllContent = function(){
-		$('.post', this).each(function(){
+		$('.post-content', this).each(function(){
 			attachments[$(this).closest('.postwrapper').attr('id')] = $(this).detach();
 		});
 	}

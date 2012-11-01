@@ -136,144 +136,146 @@
 
     {block:Posts}
 	<div id="post-{PostID}" class="postwrapper">
+		<div class="post-content">
 
-		{block:More}
-		 <a href='{Permalink}' title='{lang:Read More}'>{lang:Read More}</a>
-		{/block:More}
-		
-		
-		{block:Link}
-		<div class="post link">
-		  <div class="realpost">
-		  <h2><a href="{URL}">{Name}</a></h2> 
-		  {block:Description}{Description}{/block:Description}
-		  </div>
-		</div>
-		{/block:Link}
-		
-		
-		{block:Answer}
-		<div class="post answer">
-		  <div class="realpost">
-		  <div class="question">{lang:Asker asked}: {Question}</div>
-		  {Answer}
-		  </div>
-		</div>
-		{/block:Answer}
-
-
-		{block:Chat}
-		<div class="post chat">
-		  <div class="realpost">
-			{block:Title}<h2><a href="{Permalink}">{Title}</a></h2>{/block:Title}
-			<ol>
-			  {block:Lines}
-			  <li>{block:Label}<span class="label">{Label}</span>{/block:Label}
-			  {Line}</li>
-			  {/block:Lines}
-			</ol>
-		  </div>
-		</div>
-		{/block:Chat}
-
-		
-		{block:Video}
-		<div class="post video">
-		  <div class="realpost">
-		  <div class="embed-container">
-		  {Video-700}
-		  </div>
-		  </div>
-		</div>
-		{/block:Video}
-
-	
-	   {block:Photoset}
-		<div class="post photoset">
-			<div class="realpost photoset-carousel">
-				<ul>
-					{block:Photos} 
-					<li>
-						<img src="{PhotoURL-HighRes}" width="675" />
-					</li>
-					{/block:Photos}
-				</ul>
-			</div>	
-		</div>
-		{/block:Photoset}    
-
-		
-		{block:Audio}
-		<div class="post audio">
-		  <div class="realpost">
-		  
-		  {block:AlbumArt}
-		  <img src="{AlbumArtURL}" alt="{block:Artist}{Artist}{/block:Artist}{block:TrackName} - {TrackName}{/block:TrackName}" class="album-art" />	
-	{/block:AlbumArt}
-		  {AudioPlayerBlack}
-		  {block:Caption}{Caption}{/block:Caption}
-		  </div>
-		</div>
-		{/block:Audio}
-
-
-		{block:Photo} {block:HighRes} {/block:HighRes}
-		<div class="post photo">
-		  <div class="realpost">
-			{LinkOpenTag}
-			<img src="{PhotoUrl-HighRes}" width="675" alt="{PhotoAlt}"/>
-			{LinkCloseTag}
-		  </div>
-		</div>{/block:Photo}
-
-		
-		{block:Quote}
-		<div class="post quote">
-		  <div class="realpost">
-			<blockquote class="thequote">{Quote}</blockquote>
-			{block:Source}{Source}{/block:Source}
-		  </div>
-		</div>{/block:Quote}
-		
-		
-		{block:Text}
-		<div class="post text">
-		  <div class="realpost">
-			{block:Title}<h2><a href="{Permalink}">{Title}</a></h2>{/block:Title}
-			{Body}
-		  </div>
-		</div>{/block:Text}
-		
-		
-		<div class="sidebar">
-			{block:Date}<h3><a href="{Permalink}">{ShortMonth} {DayOfMonth}, {Year}</a></h3>{/block:Date}
-
-			{block:Caption}<div class="caption"><div class="caption-text">{Caption}</div></div>{/block:Caption}
+			{block:More}
+			 <a href='{Permalink}' title='{lang:Read More}'>{lang:Read More}</a>
+			{/block:More}
 			
-			<div class="permalink">
-				{block:HasTags}
-				<div class="tags">Tags:
-					{block:Tags}
-					<a class="{Tag}" href="{TagURL}">{Tag}</a>&nbsp;
-			  		{/block:Tags}<br />
-			  	</div>
-				{/block:HasTags}
+			
+			{block:Link}
+			<div class="post link">
+			  <div class="realpost">
+			  <h2><a href="{URL}">{Name}</a></h2> 
+			  {block:Description}{Description}{/block:Description}
+			  </div>
+			</div>
+			{/block:Link}
+			
+			
+			{block:Answer}
+			<div class="post answer">
+			  <div class="realpost">
+			  <div class="question">{lang:Asker asked}: {Question}</div>
+			  {Answer}
+			  </div>
+			</div>
+			{/block:Answer}
 
-			  	{block:IfDisqusShortName}{block:IfShowCommentCountOnFrontpage}
-			  	<a href="{Permalink}#disqus_thread"></a><br />
-			  	{/block:IfShowCommentCountOnFrontpage}{/block:IfDisqusShortName}
 
-				{block:Permalink}
-			    	{PostNotes}
-					{block:IfDisqusShortname}
-				    <div id="disqus_thread">
-				    	<script type="text/javascript" src="http://disqus.com/forums/{text:Disqus Shortname}/embed.js"></script>
-				    	<noscript><a href="http://{text:Disqus Shortname}.disqus.com/?url=ref">{lang:View the discussion thread}</a></noscript>
-				    </div>
-			  		{/block:IfDisqusShortname}
-			    {/block:Permalink} 
-			</div><!-- /.permalink -->
-		</div><!-- /.sidebar -->
+			{block:Chat}
+			<div class="post chat">
+			  <div class="realpost">
+				{block:Title}<h2><a href="{Permalink}">{Title}</a></h2>{/block:Title}
+				<ol>
+				  {block:Lines}
+				  <li>{block:Label}<span class="label">{Label}</span>{/block:Label}
+				  {Line}</li>
+				  {/block:Lines}
+				</ol>
+			  </div>
+			</div>
+			{/block:Chat}
+
+			
+			{block:Video}
+			<div class="post video">
+			  <div class="realpost">
+			  <div class="embed-container">
+			  {Video-700}
+			  </div>
+			  </div>
+			</div>
+			{/block:Video}
+
+		
+		   {block:Photoset}
+			<div class="post photoset">
+				<div class="realpost photoset-carousel">
+					<ul>
+						{block:Photos} 
+						<li>
+							<img src="{PhotoURL-HighRes}" width="675" />
+						</li>
+						{/block:Photos}
+					</ul>
+				</div>	
+			</div>
+			{/block:Photoset}    
+
+			
+			{block:Audio}
+			<div class="post audio">
+			  <div class="realpost">
+			  
+			  {block:AlbumArt}
+			  <img src="{AlbumArtURL}" alt="{block:Artist}{Artist}{/block:Artist}{block:TrackName} - {TrackName}{/block:TrackName}" class="album-art" />	
+		{/block:AlbumArt}
+			  {AudioPlayerBlack}
+			  {block:Caption}{Caption}{/block:Caption}
+			  </div>
+			</div>
+			{/block:Audio}
+
+
+			{block:Photo} {block:HighRes} {/block:HighRes}
+			<div class="post photo">
+			  <div class="realpost">
+				{LinkOpenTag}
+				<img src="{PhotoUrl-HighRes}" width="675" alt="{PhotoAlt}"/>
+				{LinkCloseTag}
+			  </div>
+			</div>{/block:Photo}
+
+			
+			{block:Quote}
+			<div class="post quote">
+			  <div class="realpost">
+				<blockquote class="thequote">{Quote}</blockquote>
+				{block:Source}{Source}{/block:Source}
+			  </div>
+			</div>{/block:Quote}
+			
+			
+			{block:Text}
+			<div class="post text">
+			  <div class="realpost">
+				{block:Title}<h2><a href="{Permalink}">{Title}</a></h2>{/block:Title}
+				{Body}
+			  </div>
+			</div>{/block:Text}
+			
+			
+			<div class="sidebar">
+				{block:Date}<h3><a href="{Permalink}">{ShortMonth} {DayOfMonth}, {Year}</a></h3>{/block:Date}
+
+				{block:Caption}<div class="caption"><div class="caption-text">{Caption}</div></div>{/block:Caption}
+				
+				<div class="permalink">
+					{block:HasTags}
+					<div class="tags">Tags:
+						{block:Tags}
+						<a class="{Tag}" href="{TagURL}">{Tag}</a>&nbsp;
+				  		{/block:Tags}<br />
+				  	</div>
+					{/block:HasTags}
+
+				  	{block:IfDisqusShortName}{block:IfShowCommentCountOnFrontpage}
+				  	<a href="{Permalink}#disqus_thread"></a><br />
+				  	{/block:IfShowCommentCountOnFrontpage}{/block:IfDisqusShortName}
+
+					{block:Permalink}
+				    	{PostNotes}
+						{block:IfDisqusShortname}
+					    <div id="disqus_thread">
+					    	<script type="text/javascript" src="http://disqus.com/forums/{text:Disqus Shortname}/embed.js"></script>
+					    	<noscript><a href="http://{text:Disqus Shortname}.disqus.com/?url=ref">{lang:View the discussion thread}</a></noscript>
+					    </div>
+				  		{/block:IfDisqusShortname}
+				    {/block:Permalink} 
+				</div><!-- /.permalink -->
+			</div><!-- /.sidebar -->
+		</div><!-- /.post-content -->
 			 
 	</div><!-- .postwrapper --> 
     {/block:Posts}
