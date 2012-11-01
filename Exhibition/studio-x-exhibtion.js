@@ -9,21 +9,38 @@ $(document).ready(function () {
 	var MAX_POSTS = 10;
 	var attachments = new Array();
 
-	/*
-	 *	Detaches all embedded content, like videos, and even photosets, which
-	 *	will be reattached - with .prependTo() - later when the post is visible
-	*/
-	$.fn.detachContent = function(){
-		$('.post', this).each(function(){
-			attachments[$(this).closest('.postwrapper').attr('id')] = $(this).detach();
-		});
+
+	var autoplayYoutube = function(str){
+		console.log('str: '+str);
+		var count = str.match(/youtube.com/g); //number of occurences of 'youtube.com'
+		console.log('count: '+count);
+		if(count.length > 0){
+			
+			var idx = str.indexOf('youtube.com');
+			idx = str.indexOf('"', idx);
+
+			var autoplay = '&amp;autoplay=1';
+
+			var output = [str.slice(0, idx), autoplay, str.slice(idx)].join('');
+
+			//for loop only handles additional occurances, not the first
+			for(i=1;i<count.length;i++){
+				idx = output.indexOf('youtube.com', idx+autoplay.length);
+				idx = output.indexOf('"', idx);
+				output = [output.slice(0, idx), autoplay, output.slice(idx)].join('');
+			}
+
+			return output;
+		}else{
+			return false;
+		}
 	}
 
 	/*
 	 *	Initializes JCarousel on photosets
 	*/
 	$.fn.initJCarousel = function(){
-		setTimeout(function(){
+		
 			console.log('jcarousel init()');
 			$(".photoset-carousel").jCarouselLite({
 		    	visible: 1,
@@ -33,103 +50,161 @@ $(document).ready(function () {
 		        btnNext: ".carousel-next",
 		        btnPrev: ".carousel-prev"
 		    });	
-		}, INIT_TIME);
+		
 		
 	}
 
-	/* 
-	 *	Hide all posts except the first
+	/*
+	 *	Detaches all embedded content, like videos, and even photosets, which
+	 *	will be reattached - with .prependTo() - later when the post is visible
 	*/
-	$('.postwrapper').each(function(i){
-		var $this = $(this);
-		$this.css('opacity', 0).hide();
-		
-		if($('.tags a', this).length > 0){
-			$('.tags a', this).each(function(){
-				var text = $(this).text();
-				if(text.substring(0,7) == 'length-'){
-					text = text.substring(7);
-					
-					text = parseInt(text)*1000;
-					text = text + parseInt(INIT_TIME);//add INIT_TIME and multiply by 1000 for ms
-					
-					text = 'length-'+text;
-					console.log('i: '+i+' text: '+text);
-					$this.addClass('length '+text);
+	$.fn.detachAllContent = function(){
+		$('.post', this).each(function(){
+			attachments[$(this).closest('.postwrapper').attr('id')] = $(this).detach();
+		});
+	}
 
-					if($('.post', this).hasClass('video')){
-						$(this).addClass('video-wrapper');
-					}else if($('.post', this).hasClass('photoset')){
-						$(this).addClass('photoset-wrapper');
-					}
+	$.fn.attachContent = function(thisID){
+
+		attachments[ thisID ].prependTo(this);
+
+		setTimeout(function(){
+			$(this).initJCarousel();
+			
+			attachments[ thisID ].find('.embed-container').each(function(){
+				var newHTML = autoplayYoutube( $(this).html() );
+				if(newHTML){
+					console.log('newHTML: '+ newHTML);
+					$(this).html( newHTML );
 				}
 			});
+					
+		}, INIT_TIME);
 
-		}else{
-			var photosetLength = $('.photoset li',this).length*PHOTOSET_TIMEOUT + INIT_TIME;
-			if(photosetLength > INIT_TIME){
-				$this.addClass('photoset-wrapper length length-'+photosetLength);
-			}
-		}
 		
-		$this.detachContent();		
-	});
+
+	}
+
 	
 
 
-	/*
-	 *	Functionality to cycle through posts
-	*/
-	$.fn.timeOutPost = function(idx, total){
-		console.log('');
-		console.log('------------ NEW POST #'+idx+' ----------');
-		var $this = $(this);
-		idx++;
-		if(idx > total){
-			idx = 1;
-		}
+	var foreverPost = false;
 
-		if( attachments[ $(this).attr('id') ] != undefined ){
-			$(this).show();
-			attachments[ $(this).attr('id') ].prependTo(this);
-			$(this).initJCarousel();
+	$('.tags a').each(function(){
+		if($(this).text() == 'length-forever'){
+			$(this).text('');
+			foreverPost = true;
+			$('.postwrapper').css('opacity', 0);
+			var $pw = $(this).closest('.postwrapper').detach();
+			$('.postwrapper').remove();//remove all postwrappers
+			$pw.prependTo('#content');//re-add the length-forever post
+
+			$pw.initJCarousel();
 
 			setTimeout(function(){
-				$this.animate({
+				$pw.animate({
 					'opacity': 1
 				}, FADE_TIME);
 			}, INIT_TIME);
 		}
+	});
+
+	if(!foreverPost){
+		/* 
+		 *	Hide all posts except the first
+		*/
+		$('.postwrapper').each(function(i){
+			var $this = $(this);
+			$this.css('opacity', 0).hide();
+			
+			if($('.tags a', this).length > 0){
+				$('.tags a', this).each(function(){
+					var text = $(this).text();
+					if(text.substring(0,7) == 'length-'){
+						text = text.substring(7);
+						
+						text = parseInt(text)*1000;
+						text = text + parseInt(INIT_TIME);//add INIT_TIME and multiply by 1000 for ms
+						
+						text = 'length-'+text;
+						console.log('i: '+i+' text: '+text);
+						$this.addClass('length '+text);
+
+						if($('.post', this).hasClass('video')){
+							$(this).addClass('video-wrapper');
+						}else if($('.post', this).hasClass('photoset')){
+							$(this).addClass('photoset-wrapper');
+						}
+					}
+				});
+
+			}else{
+				var photosetLength = $('.photoset li',this).length*PHOTOSET_TIMEOUT + INIT_TIME;
+				if(photosetLength > INIT_TIME){
+					$this.addClass('photoset-wrapper length length-'+photosetLength);
+				}
+			}
+			
+			$this.detachAllContent();		
+		});
 		
 
-		var postTime = DEFAULT_POST_TIME;
 
-		if($(this).hasClass('length')){
-			var lengthClass = $(this).attr('class');
-			lengthClassIdx = lengthClass.indexOf('length-');
-			lengthClass = lengthClass.substring(lengthClassIdx+7);
-			postTime = parseInt(lengthClass);
+		/*
+		 *	Functionality to cycle through posts
+		*/
+		$.fn.timeOutPost = function(idx, total){
+			console.log('');
+			console.log('------------ NEW POST #'+idx+' ----------');
+			var $this = $(this);
+			idx++;
+			if(idx > total){
+				idx = 1;
+			}
+
+			if( attachments[ $(this).attr('id') ] != undefined ){
+				$(this).show();
+				
+				$(this).attachContent( $(this).attr('id') );
+				
+				
+
+				setTimeout(function(){
+					$this.animate({
+						'opacity': 1
+					}, FADE_TIME);
+				}, INIT_TIME);
+			}
+			
+
+			var postTime = DEFAULT_POST_TIME;
+
+			if($(this).hasClass('length')){
+				var lengthClass = $(this).attr('class');
+				lengthClassIdx = lengthClass.indexOf('length-');
+				lengthClass = lengthClass.substring(lengthClassIdx+7);
+				postTime = parseInt(lengthClass);
+			}
+
+			var time = postTime-FADE_TIME;
+			console.log('time: '+time);
+
+			
+			setTimeout(function(){
+					$this.animate({
+						'opacity': 0
+					}, FADE_TIME, function(){
+						$this.find('.post').remove();//detach post content
+						$this.hide();
+						$('.postwrapper:nth-child('+idx+')').timeOutPost(idx, total);
+					});
+				}, time);
+			
+			
 		}
 
-		var time = postTime-FADE_TIME;
-		console.log('time: '+time);
-
-		
-		setTimeout(function(){
-				$this.animate({
-					'opacity': 0
-				}, FADE_TIME, function(){
-					$this.find('.post').remove();//detach post content
-					$this.hide();
-					$('.postwrapper:nth-child('+idx+')').timeOutPost(idx, total);
-				});
-			}, time);
-		
-		
-	}
-
-	$('.postwrapper:nth-child(1)').timeOutPost(1, $('.postwrapper').length);
-
+		$('.postwrapper:nth-child(1)').timeOutPost(1, $('.postwrapper').length);
+	}//end if(!foreverPost)
 
 
 
