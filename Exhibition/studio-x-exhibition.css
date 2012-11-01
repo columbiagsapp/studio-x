@@ -320,6 +320,7 @@ body {
     
 
     .permalink {
+      display: none;
       font-size: 12px;
       font-family: 'Courier New', Courier, monospace;
       font-weight: normal !important;
