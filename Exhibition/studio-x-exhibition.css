@@ -5,7 +5,7 @@ body {
     }
     
     h1 { 
-    	width: 1000px; 
+    	width: 1600px; 
     	margin: auto; 
     }
     
@@ -40,7 +40,7 @@ body {
     
     
     h3 { 
-   		font-size: 12px; 
+   		font-size: 13px; 
   	  	text-transform: uppercase; 
   	  	letter-spacing: 1px; 
     }
@@ -96,13 +96,13 @@ body {
     }
     
     #header {
-    	width: 1000px;
-      	margin: 60px auto 30px;
+    	width: 1600px;
+      	margin: 80px auto 60px;
       	overflow: auto;
     }
     
     #nav{
-    	width: 1000px;
+    	width: 1600px;
       	margin: 0 auto;
       	overflow: auto;
     }
@@ -206,12 +206,12 @@ body {
 	
     
     #main {
-      width: 1000px;
+      width: 1600px;
       margin: 0 auto;
     }
     
     
-    #pager {width: 250px;}
+    #pager {width: 350px;}
     #past { float: left; } 
    	#future { float: right; margin-right: 4px; } 
     #page { float: left; width: 300px; text-align: center; color: #666; }
@@ -294,8 +294,8 @@ body {
      
 	.sidebar {
     	float: left;
-    	width: 250px;
-      font: bold 13px/17px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    	width: 350px;
+      font: bold 16px/20px 'Helvetica Neue', Helvetica, Arial, sans-serif;
       margin-bottom: 7em;
     }
 
@@ -305,7 +305,7 @@ body {
     }
 
     .sidebar .tumblr_blog{
-      font-size: 12px;
+      font-size: 13px;
       text-transform: uppercase;
       letter-spacing: 1px;
     }
@@ -317,7 +317,7 @@ body {
 
     .permalink {
       display: none;
-      font-size: 12px;
+      font-size: 13px;
       font-family: 'Courier New', Courier, monospace;
       font-weight: normal !important;
       margin-top: 1em;
@@ -337,9 +337,9 @@ body {
  
     .realpost {
       float: left;
-      width: 675px;
+      width: 1200px;
       max-width: 100%;
-      margin-right:25px;
+      margin-right:50px;
       padding-top: 0; 
       margin-top: 0;
       font: bold 21px/25px 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -381,14 +381,14 @@ body {
     }
 
     div.text img {
-      max-width: 800px
+      max-width: 1200px
     }
     div.text blockquote img {
-      max-width: 150px
+      max-width: 1200px
     }
     
     ol.notes {
-        font-size: 12px;
+        font-size: 13px;
         font-family: 'Courier New', Courier, monospace;
         list-style-type: none;
         margin: 0 0 70px 130px;
@@ -404,23 +404,24 @@ body {
     .search_query { font-weight: bold; }
 
     .photoset-carousel img{
-      min-height: 450px;
+      min-height: 800px;
     }
-
-
 
 
     .post-content{
-      width:950px;
+      width:1600px;
     }
+
+
     .split .post-content,
     .split .post-content img,
     .split .post-content iframe,
     .split .post-content .post,
     .split .post-content .sidebar
     {
-      width:500px;
+      width:700px;
       float:left;
+      margin-right: 100px;
     }
 
 
