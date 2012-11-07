@@ -54,24 +54,28 @@ $(document).ready(function () {
 	*/
 	$.fn.detachAllContent = function(){
 		$('.post-content-container', this).each(function(){
-			attachments[$(this).closest('.postwrapper').attr('id')] = $(this).detach();
+			var postID = $(this).closest('.postwrapper').attr('id');
+			attachments[ postID ] = $(this).detach();
+
+			if( attachments[ postID ].find('.embed-container').length > 0){
+				attachments[ postID ].find('.embed-container').each(function(){
+					var newHTML = autoplayYoutube( $(this).html() );
+					if(newHTML){
+						$(this).html( newHTML );
+					}
+				});
+			}
 		});
 	}
 
 	$.fn.attachContent = function(thisID){
 
+		console.log('attaching: '+attachments[ thisID ].html());
+
 		attachments[ thisID ].prependTo(this);
 
 		setTimeout(function(){
 			$(this).initJCarousel();
-			
-			attachments[ thisID ].find('.embed-container').each(function(){
-				var newHTML = autoplayYoutube( $(this).html() );
-				if(newHTML){
-					$(this).html( newHTML );
-				}
-			});
-					
 		}, INIT_TIME);
 
 		
@@ -170,15 +174,16 @@ $(document).ready(function () {
 			console.log('');
 			console.log('------------ NEW POST #'+idx+' ----------');
 			var $this = $(this);
+			var postID = $(this).attr('id');
 			idx++;
 			if(idx > total){
 				idx = 1;
 			}
 
-			if( attachments[ $(this).attr('id') ] != undefined ){
+			if( attachments[ postID ] != undefined ){
 				$(this).show();
 				
-				$(this).attachContent( $(this).attr('id') );
+				$(this).attachContent( postID );
 				
 				
 
@@ -206,7 +211,7 @@ $(document).ready(function () {
 					$this.animate({
 						'opacity': 0
 					}, FADE_TIME, function(){
-						$this.find('.post').remove();//detach post content
+						$this.find('.post-content-container').remove();//detach post content
 						$this.hide();
 						$('.postwrapper:nth-child('+idx+')').timeOutPost(idx, total);
 					});
