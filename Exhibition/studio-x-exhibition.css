@@ -297,6 +297,7 @@ body {
     	width: 350px;
       font: bold 16px/20px 'Helvetica Neue', Helvetica, Arial, sans-serif;
       margin-bottom: 7em;
+      margin-top: 2em;
     }
 
     .sidebar blockquote{
@@ -416,16 +417,18 @@ body {
     .split .post-content,
     .split .post-content img,
     .split .post-content iframe,
-    .split .post-content .post,
-    .split .post-content .sidebar
+    .split .post-content .post
     {
       width:700px;
       float:left;
       margin-right: 100px;
     }
 
+.split .post-content .sidebar {
 
-
+  width: 650px;
+  margin-left: 2em;
+}
 
 
 
