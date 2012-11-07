@@ -98,6 +98,8 @@ $(document).ready(function () {
 				if( $( '.'+className ).length > 0 ){
 					var $that = $(this).closest('.postwrapper');
 					$(this).closest('.post-content').appendTo( $( '.'+className ).find('.post-content-container') );
+					$('.last-split').removeClass('last-split');
+					$( '.'+className ).find('.post-content-container .post-content:last-child').addClass('last-split');
 					$that.remove();
 				}else{//first such split
 					$(this).closest('.postwrapper').addClass( 'split '+className );
