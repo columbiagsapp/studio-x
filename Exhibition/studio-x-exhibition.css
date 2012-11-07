@@ -419,10 +419,14 @@ body {
     .split .post-content iframe,
     .split .post-content .post
     {
-      width:700px;
+      width:750px;
       float:left;
       margin-right: 100px;
     }
+
+.split .post-content.last-split {
+  margin-right: 0px !important;
+}
 
 .split .post-content .sidebar {
 
