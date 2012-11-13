@@ -298,6 +298,8 @@ body {
       font: bold 16px/20px 'Helvetica Neue', Helvetica, Arial, sans-serif;
       margin-bottom: 7em;
       margin-top: 2em;
+      height:750px;
+      overflow: hidden;
     }
 
     .sidebar blockquote{
@@ -379,13 +381,24 @@ body {
        *the* quote from any other blockquotes in the post. */
     blockquote.thequote { 
       line-height: 1.25;
+      margin:0px;
+      padding: 0px;
     }
 
     div.text img {
-      max-width: 1200px
+      max-width: 750px;
+      max-height: 800px;
+      float:left;
+      margin: 0 20px 20px 0;
     }
+
     div.text blockquote img {
-      max-width: 1200px
+      max-width: 750px
+    }
+
+    .text .realpost {
+      width: 1600px;
+      margin-right: 0px !important;
     }
     
     ol.notes {
