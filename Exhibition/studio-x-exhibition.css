@@ -75,7 +75,7 @@ body {
 
     }
     
-    .text.post blockquote, .post.quote blockquote {  
+    .text.post blockquote, .post.quote blockquote, .post.link blockquote {  
       margin-left: -30px; 
       padding-left: 30px; 
       color: #222;
@@ -87,7 +87,7 @@ body {
       /* for nested blockquotes */
       blockquote blockquote { margin-left: 0; }
       blockquote em { font-style: normal; }
-      blockquote ul, blockquote ol { padding-left: 2em; }
+      blockquote ul, blockquote ol { padding-left: 0; }
     ul, ol { padding-left: 0; }
     
     /* Specific elements. */
