@@ -82,7 +82,8 @@ $(document).ready(function () {
 
 	}
 
-	
+
+
 
 
 	var foreverPost = false;
@@ -94,11 +95,12 @@ $(document).ready(function () {
 			if($(this).text().indexOf('split-') >= 0){
 				var className = $(this).text()+'-concat';
 
-
 				if( $( '.'+className ).length > 0 ){
 					var $that = $(this).closest('.postwrapper');
 					$(this).closest('.post-content').appendTo( $( '.'+className ).find('.post-content-container') );
-					$('.last-split').removeClass('last-split');
+
+					//$('.last-split').removeClass('last-split');
+					
 					$( '.'+className ).find('.post-content-container .post-content:last-child').addClass('last-split');
 					$that.remove();
 				}else{//first such split
