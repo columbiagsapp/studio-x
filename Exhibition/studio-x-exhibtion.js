@@ -228,7 +228,7 @@ $(document).ready(function () {
 		window.location.href = location.origin + "?" + Date.parse(new Date());
 	}
 
-	setInterval(reloadBrowser, 300000);//reload every 6 hours = 21600000 ms
+	setInterval(reloadBrowser, 21600000);//reload every 6 hours = 21600000 ms
 	console.log('loading');
 
 });
