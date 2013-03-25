@@ -69,9 +69,6 @@ $(document).ready(function () {
 	}
 
 	$.fn.attachContent = function(thisID){
-
-		console.log('attaching: '+attachments[ thisID ].html());
-
 		attachments[ thisID ].prependTo(this);
 
 		setTimeout(function(){
@@ -175,8 +172,6 @@ $(document).ready(function () {
 		 *	Functionality to cycle through posts
 		*/
 		$.fn.timeOutPost = function(idx, total){
-			console.log('');
-			console.log('------------ NEW POST #'+idx+' ----------');
 			var $this = $(this);
 			var postID = $(this).attr('id');
 			idx++;
@@ -228,6 +223,12 @@ $(document).ready(function () {
 	}//end if(!foreverPost)
 
 
+	function reloadBrowser(){
 
+		window.location.href = location.origin + "?" + Date.parse(new Date());
+	}
+
+	setInterval(reloadBrowser, 300000);//reload every 6 hours = 21600000 ms
+	console.log('loading');
 
 });

@@ -1,11 +1,14 @@
 body {
          padding: 0; margin: 0;
           background: #EBEBEB;
-      	font: 13px/17px 'Helvetica Neue', Helvetica, Arial, sans-serif;;
+      	font: 13px/17px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        height:100%;
+        width:100%;
+        overflow: hidden;
     }
     
     h1 { 
-    	width: 1600px; 
+    	width: 100%; 
     	margin: auto; 
     }
     
@@ -96,8 +99,7 @@ body {
     }
     
     #header {
-    	width: 1600px;
-      	margin: 80px auto 60px;
+      	margin: 40px auto;
       	overflow: auto;
     }
     
@@ -206,7 +208,7 @@ body {
 	
     
     #main {
-      width: 1600px;
+      width: 1260px;
       margin: 0 auto;
     }
     
@@ -338,18 +340,9 @@ body {
     
     .label { font-weight: bold; }
  
-    .realpost {
-      float: left;
-      width: 1200px;
-      max-width: 100%;
-      margin-right:50px;
-      padding-top: 0; 
-      margin-top: 0;
-      font: bold 2em 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    }
-    
-    
-   
+
+
+
     div.audio embed { margin-top: .3em; margin-bottom: 1em; }
     img.album-art { float: right; padding-left: 2em; height: 100px; width: 100px; }
     
@@ -418,13 +411,44 @@ body {
     .search_query { font-weight: bold; }
 
     .photoset-carousel img{
-      min-height: 800px;
+      height: 570px;
+      width:766px;
+    }
+
+
+
+    .realpost {
+      float: left;
+      width: 766px;
+      max-width: 100%;
+      margin-right:50px;
+      padding-top: 0; 
+      margin-top: 0;
+      font: bold 2em 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
     }
 
 
     .post-content{
-      width:1600px;
+      width:100%;
     }
+
+    .post.photo{
+      width:766px;
+      height:570px;
+      margin-right:50px;
+      overflow:hidden;
+      float:left;
+    }
+
+    .post.photo img{
+      width:auto;
+      height:auto;
+      max-width:100%;
+      max-height:100%;
+    }
+
+
 
 
     .split .post-content,
@@ -432,9 +456,14 @@ body {
     .split .post-content iframe,
     .split .post-content .post
     {
-      width:750px;
+      width:580px;
       float:left;
       margin-right: 100px;
+    }
+
+    .split .post-content .post{
+      max-height: 500px;
+      overflow:hidden;
     }
 
 .split .post-content.last-split {
@@ -442,11 +471,13 @@ body {
 }
 
 .split .post-content .sidebar {
-
-  width: 650px;
+  width: 480px;
   margin-left: 2em;
 }
 
+#tumblr_controls{
+  display: none !important;
+}
 
 
 
