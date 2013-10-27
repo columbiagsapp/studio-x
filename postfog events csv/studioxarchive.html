@@ -1,0 +1,293 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>JSON to CSV</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script src="json_parse.js"></script>
+	
+    <script type="text/javascript">
+
+
+		function DownloadJSON2CSV(objArray)
+		{
+			var array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
+			
+			var str = 'SRM_SaaS_ES,MXPERUSERInterface,Add,EN';
+			str += '\r\n';
+			str = 'TITLE,LOCATION,TYPE,DATE';
+			str += '\r\n';
+			
+	
+			for (var i = 0; i < array.length; i++) {
+				if(i%2 == 1){
+					var line = '';
+		
+					for (var index in array[i]) {
+						var node = JSON.stringify(array[i][index]);
+	
+						
+						//line += array[i][index] + ',';
+						line += JSON.stringify(array[i][index].title) + ',';
+						var loc = '';
+						var location = JSON.stringify(array[i][index].field_event_location_value);
+						switch(location){
+							
+							case '\"54\"':
+								loc = "NYC";
+								break;
+							case '\"14\"':
+								loc = "NYC";
+								break;
+							case '\"15\"':
+								loc = "RIO";
+								break;
+							case '\"16\"':
+								loc = "MUM";
+								break;
+							case '\"17\"':
+								loc = "BEJ";
+								break;
+							case '\"19\"':
+								loc = "AMM";
+								break;
+							case '\"20\"':
+								loc = "SP";
+								break;
+							case '\"159\"':
+								loc = "RIO";
+								break;
+							case '\"191\"':
+								loc = "MUM";
+								break;
+							case '\"392\"':
+								loc = "OTHER";
+								break;
+							case '\"417\"':
+								loc = "New York";
+								break;
+							case '\"433\"':
+								loc = "New York";
+								break;
+							case '\"533\"':
+								loc = "New York";
+								break;
+							case '\"433\"':
+								loc = "New York";
+								break;
+							case '\"598\"':
+								loc = "AFRICA - Cape Town";
+								break;
+							case '\"611\"':
+								loc = "AFRICA - JoBerg";
+								break;
+							case '\"676\"':
+								loc = "BEJ";
+								break;
+							case '\"801\"':
+								loc = "TOKYO";
+								break;
+							case '\"824\"':
+								loc = "Reno, NV";
+								break;
+							case '\"851\"':
+								loc = "RIO";
+								break;
+							case '\"857\"':
+								loc = "RIO";
+								break;
+							case '\"920\"':
+								loc = "BEJ";
+								break;
+							case '\"931\"':
+								loc = "New York";
+								break;
+							case '\"957\"':
+								loc = "AMM";
+								break;
+							case '\"974\"':
+								loc = "Istanbul";
+								break;
+							case '\"975\"':
+								loc = "New York";
+								break;
+							case '\"1007\"':
+								loc = "New York";
+								break;
+							case '\"1008\"':
+								loc = "New York";
+								break;
+							case '\"1019\"':
+								loc = "Aspen";
+								break;
+							case '\"1020\"':
+								loc = "Denver";
+								break;
+							default:
+								loc = "UNKNOWN";
+								break;
+						}
+						line += loc + ',';
+						
+						var type = '';
+						switch(JSON.stringify(array[i][index].field_event_taxonomy_type_value)){
+							case '\"64\"':
+								type = "Workshop";
+								break;
+							case '\"91\"':
+								type = "Book Launch";
+								break;
+							case '\"1006\"':
+								type = "Competition";
+								break;
+							case '\"62\"':
+								type = "Conference";
+								break;
+							case '\"645\"':
+								type = "Debate";
+								break;
+							case '\"858\"':
+								type = "Demonstration";
+								break;
+							case '\"633\"':
+								type = "Dinner";
+								break;
+							case '\"61\"':
+								type = "Discussion";
+								break;
+							case '\"58\"':
+								type = "Exhibition";
+								break;
+							case '\"64\"':
+								type = "Exhibition Opening";
+								break;
+							case '\"905\"':
+								type = "Fair";
+								break;
+							case '\"668\"':
+								type = "Film Screening";
+								break;
+							case '\"63\"':
+								type = "Forum";
+								break;
+							case '\"60\"':
+								type = "Lecture";
+								break;
+							case '\"81\"':
+								type = "Live Interview";
+								break;
+							case '\"70\"':
+								type = "Panel";
+								break;
+							case '\"1000\"':
+								type = "Performance";
+								break;
+							case '\"1009\"':
+								type = "Discussion - Rapid Response";
+								break;
+							case '\"136\"':
+								type = "Exhibition - Discussion";
+								break;
+							case '\"80\"':
+								type = "Exhibition - Opening";
+								break;
+							case '\"59\"':
+								type = "Symposium";
+								break;
+							case '\"958\"':
+								type = "Workshop";
+								break;
+							case '\"560\"':
+								type = "Reception";
+								break;
+							case '\"925\"':
+								type = "Lecture - TEDx";
+								break;
+							case '\"907\"':
+								type = "Lecture - XTalk";
+								break;
+							case '\"906\"':
+								type = "Fair - Country Fair";
+								break;
+							case '\"592\"':
+								type = "Benefit";
+								break;
+							case '\"766\"':
+								type = "Salon";
+								break;
+							case '\"88\"':
+								type = "Workshop - Night School";
+								break;
+							case '\"65\"':
+								type = "Screening";
+								break;
+							case '\"83\"':
+								type = "Panel - Book Launch";
+								break;
+							case '\"647\"':
+								type = "Exhibition Opening";
+								break;
+							case '\"667\"':
+								type = "Tour";
+								break;
+							case '\"675\"':
+								type = "Seminar";
+								break;
+							case '\"790\"':
+								type = "Live Interview";
+								break;
+							case '\"800\"':
+								type = "Workshop - Code Dojo";
+								break;
+							case '\"838\"':
+								type = "Panel - Mobility";
+								break;
+							case '\"790\"':
+								type = "Live Interview";
+								break;
+							
+							default:
+								type = JSON.stringify(array[i][index].field_event_taxonomy_type_value);
+								break;
+						}
+						line += type + ',';
+						
+						
+						
+						var date = JSON.stringify(array[i][index].field_event_date_value);
+						
+						date = date.substring(0,11);
+						date += '"';
+						line += date;
+						
+						
+					}
+	
+		
+					//line.slice(0,line.Length-1); 
+		
+					str += line + '\r\n';
+				}
+			}
+			window.open( "data:text/csv;charset=utf-8," + escape(str))
+		}
+	
+
+	
+	
+		var url = 'http://events.gsapp.org/studioxarchive?callback=?';
+		$.getJSON(url, function(data){
+			var value = JSON.stringify(data.nodes);
+			
+			$("#fill").text(value);
+			DownloadJSON2CSV(data.nodes);
+		});
+    </script>
+
+</head>
+<body>
+	<div id="content">The content: <span id="fill"></span></div>
+</body>
+</html>
+
+
+
