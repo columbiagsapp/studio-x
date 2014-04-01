@@ -1,0 +1,370 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+ 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+  <head> 
+    <link rel="shortcut icon" href="{Favicon}" />
+    {block:Description}<meta name="description" content="{MetaDescription}" />{/block:Description}
+    <title>{Title}{block:SearchPage}: {lang:Search results for SearchQuery}{/block:SearchPage}{block:PostSummary}: {PostSummary}{/block:PostSummary}</title>
+    <!-- Default values -->
+
+    <meta name="text:Disqus Shortname" content="" />
+
+    <link type="text/css" rel="stylesheet" media="all" href="http://www.columbia.edu/cu/arch/studio-x/studio-x.css">
+
+    <style>
+     /*background color for each city blog*/
+    
+    body{
+    	background: #ffedee;
+    }
+    /* Styling based on Tumblr customizable inputs */
+    
+    {block:IfDisqusShortname}
+    /* Styling for Disqus comments */
+    div#disqus_thread {
+      width: 480px; margin: 0 auto;
+      padding-right: 60px;
+      margin-bottom: 2em;
+      margin-top: -1em;
+    }
+    
+    div#disqus_thread h3 {
+      margin-bottom: 1.5em;
+    }
+    
+    div#disqus_thread div#dsq-comments-title { margin-top: 3em; }
+    
+    body#with-disqus div#it.post {
+      margin-top: 0;
+    }
+    
+    body#with-disqus h1 {
+      margin-bottom: -2em;
+    }
+    
+    body#with-disqus div.realpost {
+      margin-bottom: 0; padding-bottom: 0;
+    }
+    
+    .dsq-comment-header-meta {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    p#powered-by-disqus {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 10px;
+      margin-top: 2em;
+      text-transform: uppercase;
+    }
+    
+    div#disqus_thread .dsq-options {
+      display: none;
+    }
+    {/block:IfDisqusShortname}
+    
+    {CustomCSS}
+    </style> 
+    
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script type="text/javascript" src="http://www.columbia.edu/cu/arch/studio-x/arrow_top.js"></script>
+	<script type="text/javascript" src="http://www.columbia.edu/cu/arch/studio-x/truncator.js"></script>
+	<script type="text/javascript" src="http://www.columbia.edu/cu/arch/studio-x/studio-x-autopager.js"></script>
+	<script type="text/javascript" src="http://www.columbia.edu/cu/arch/studio-x/studio-x.js"></script>
+
+	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-34753410-1', 'tumblr.com');
+  ga('send', 'pageview');
+
+</script>
+	
+  </head> 
+  
+
+  <body{block:PermalinkPage} class="permalink-page"{/block:PermalinkPage}> 
+  
+  
+  <div id="wrapper">  
+    
+  <div id="header">
+	<a id="logo" href="/"><img src="http://www.columbia.edu/cu/arch/studio-x/studiox_logo-asia.png"></a>
+	
+	<a id="rss" target="_blank" href="http://studiox-beijing.tumblr.com/rss">RSS</a>
+	<a id="vimeo" target="_blank" href="http://vimeo.com/user11152188/videos">Vimeo</a>
+	<a id="flickr" target="_blank" href="http://www.flickr.com/photos/studio_x_new_york_columbia_gsapp/collections/72157624594541890/">Flickr</a>
+	<a id="facebook" target="_blank" href="http://www.facebook.com/pages/Studio-X-Beijing/297185968656?ref=ts">Facebook</a>
+	<a id="about" target="_blank" href="http://www.arch.columbia.edu/studiox">About Studio-X</a>
+
+	    
+    <div id="nav">
+        <div id="headlink"><h2><a href="http://studiox-global.tumblr.com/">Featured</a></h2></div>
+        <div id="headlink" class="north-america"><h2><a href="http://studiox-nyc.tumblr.com/">New York</a></h2></div>
+        <div id="headlink" class="latin-america"><h2><a href="http://studiox-rio.tumblr.com/">Rio De Janeiro</a></h2></div>
+        <div id="headlink" class="middle-east"><h2><a href="http://studiox-istanbul.tumblr.com/">Istanbul</a></h2></div>
+        <div id="headlink" class="middle-east"><h2><a href="http://studiox-ammanlab.tumblr.com/">Amman</a></h2></div>
+        <div id="headlink" class="south-asia"><h2><a href="http://studiox-mumbai.tumblr.com/">Mumbai</a></h2></div>
+        <div id="headlink" class="asia-active"><h2><a href="http://studiox-beijing.tumblr.com/">Beijing</a></h2></div>
+        <div id="headlink" class="africa"><h2><a href="http://studiox-joburg.tumblr.com/">Johannesburg</a></h2></div>
+        <div id="headlink" class="asia"><h2><a href="http://studiox-tokyolab.tumblr.com/">Tokyo</a></h2></div>
+        </div>
+
+        
+        <!-- Automatically Show Tumblr Pages, Ask & Submissions-->
+        <!--
+            {block:HasPages}
+            {block:Pages}<a href="{URL}">{Label}</a>&nbsp;&nbsp;&nbsp;{/block:Pages}
+            {/block:HasPages}
+            {block:AskEnabled}<a href="/ask">{AskLabel}</a>&nbsp;&nbsp;&nbsp;{/block:AskEnabled}
+            {block:SubmissionsEnabled}<a href="/submit">{SubmitLabel}</a>{/block:SubmissionsEnabled} 
+        -->
+    
+  </div>
+  
+  
+  
+  
+    
+  <div id="main">
+    {block:SearchPage}
+    <div class="post search">
+    <span class="permalink">{lang:Search}</span>
+    <div class="realpost">
+        {block:SearchResults}
+            {lang:SearchResultCount results for SearchQuery 2}.
+        {/block:SearchResults}
+        {block:NoSearchResults}
+            {lang:No search results for SearchQuery 2}.
+        {/block:NoSearchResults}
+    </div></div>
+    {/block:SearchPage}
+    
+    
+    
+    
+    
+
+<div class = "autopagerize_page_element" >
+
+
+
+    {block:Posts}
+	<div class="postwrapper">
+
+		{block:More}
+		 <a href='{Permalink}' title='{lang:Read More}'>{lang:Read More}</a>
+		{/block:More}
+		
+		
+		{block:Link}
+		<div class="post link">
+		  <div class="realpost">
+		  <h2><a href="{URL}">{Name}</a></h2> 
+		  {block:Description}{Description}{/block:Description}
+		  </div>
+		</div>
+		{/block:Link}
+		
+		
+		
+		
+		{block:Answer}
+		<div class="post answer">
+		  <div class="realpost">
+		  <div class="question">{lang:Asker asked}: {Question}</div>
+		  {Answer}
+		  </div>
+		</div>
+		{/block:Answer}
+		
+		
+	
+		
+		{block:Chat}
+		<div class="post chat">
+		  <div class="realpost">
+			{block:Title}<h2><a href="{Permalink}">{Title}</a></h2>{/block:Title}
+			<ol>
+			  {block:Lines}
+			  <li>{block:Label}<span class="label">{Label}</span>{/block:Label}
+			  {Line}</li>
+			  {/block:Lines}
+			</ol>
+		  </div>
+		</div>
+		{/block:Chat}
+		
+		
+		
+		
+		{block:Video}
+		<div class="post video">
+		  <div class="realpost">
+		  <div class="embed-container">
+		  {Video-500}
+		  </div>
+		  </div>
+		</div>
+		{/block:Video}
+		
+	
+	
+	   {block:Photoset}
+		<div class="post photoset">
+			<div class="realpost">
+			{block:Photos} 
+			<img src="{PhotoURL-HighRes}" width="675" />
+			{/block:Photos}
+			
+			</div>	
+		</div>
+		{/block:Photoset}    
+		
+		
+		
+		
+		
+		{block:Audio}
+		<div class="post audio">
+		  <div class="realpost">
+		  
+		  {block:AlbumArt}
+		  <img src="{AlbumArtURL}" alt="{block:Artist}{Artist}{/block:Artist}{block:TrackName} - {TrackName}{/block:TrackName}" class="album-art" />	
+	{/block:AlbumArt}
+		  {AudioPlayerBlack}
+		  {block:Caption}{Caption}{/block:Caption}
+		  </div>
+		</div>
+		{/block:Audio}
+		
+		
+		
+		
+		{block:Photo} {block:HighRes} {/block:HighRes}
+		<div class="post photo">
+		  <div class="realpost">
+			{LinkOpenTag}
+			<img src="{PhotoUrl-HighRes}" width="675" alt="{PhotoAlt}"/>
+			{LinkCloseTag}
+		  </div>
+		</div>{/block:Photo}
+		
+		
+		
+		
+		{block:Quote}
+		<div class="post quote">
+		  <div class="realpost">
+			<blockquote class="thequote">{Quote}</blockquote>
+			{block:Source}{Source}{/block:Source}
+		  </div>
+		</div>{/block:Quote}
+		
+		
+		
+		
+		{block:Text}
+		<div class="post text">
+		  <div class="realpost">
+			{block:Title}<h2><a href="{Permalink}">{Title}</a></h2>{/block:Title}
+			{Body}
+		  </div>
+		</div>{/block:Text}
+		
+		
+		
+		
+	{block:Date}
+	<div class="sidebar">
+		<h3><a href="{Permalink}">{ShortMonth} {DayOfMonth}, {Year}</a></h3>
+		{block:Caption}<div class="caption"><div class="caption-text">{Caption}</div></div>{/block:Caption}
+		
+	<div class="permalink">
+		<div class="tags">      
+		  
+	 {block:HasTags}Tags:
+	  {block:Tags}
+		<a class="{Tag}" href="{TagURL}">-{Tag}</a>&nbsp;
+	  {/block:Tags}<br />
+	 {/block:HasTags}
+	  </div>
+	   
+			  {block:IfDisqusShortName}{block:IfShowCommentCountOnFrontpage}<a href="{Permalink}#disqus_thread"></a><br />
+			  {/block:IfShowCommentCountOnFrontpage}{/block:IfDisqusShortName}{NoteCountWithLabel}<br />
+			  
+	
+	  <a href="{ReblogURL}">&#8634;  Reblog</a>
+	<br />  
+		  </div>
+		</div>  
+		 {/block:Date}
+			 
+			 
+	</div><!-- .postwrapper --> 
+    {/block:Posts}
+    
+   	
+   	</div>
+
+    
+    
+    
+    {block:IfDisqusShortname}
+      {block:Permalink}
+      <div id="disqus_thread">
+      <script type="text/javascript" src="http://disqus.com/forums/{text:Disqus Shortname}/embed.js"></script>
+      <noscript><a href="http://{text:Disqus Shortname}.disqus.com/?url=ref">{lang:View the discussion thread}</a></noscript>
+      <p id="powered-by-disqus">{lang:Blog comments powered by Disqus 2}</p>
+      </div>
+      {/block:Permalink}
+    {/block:IfDisqusShortname}
+    
+    {PostNotes}
+    
+    
+ <!-- 
+    {block:IndexPage}
+    {block:Pagination}
+      <div id="pager">
+      {block:NextPage}<a href="{NextPage}" id="past">&laquo; {lang:Older}</a>{/block:NextPage}
+      {block:PreviousPage}<a href="{PreviousPage}" id="future">{lang:Newer} &raquo;</a>{/block:PreviousPage}
+    </div>
+    {/block:Pagination}
+    {/block:IndexPage}
+    
+    
+    <div id="foot"> 
+    <ul id="bottom">
+      <li><a href="http://arch.columbia.edu">GSAPP</a></li> 
+
+    </ul> 
+    <form action="/search" method="get"> 
+    <input type="text" name="q" value="{lang:Search}" onclick="javascript:if (this.value == '{lang:Search}') this.value = '';"/> 
+    </form> 
+    </div>
+-->    
+
+  
+  {block:IfDisqusShortname}
+        <script type="text/javascript">
+            //<![CDATA[
+            (function() {
+                var links = document.getElementsByTagName('a');
+                var query = '?';
+                for(var i = 0; i < links.length; i++) {
+                    if(links[i].href.indexOf('#disqus_thread') >= 0) {
+                        query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+                    }
+                }
+                document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/{text:Disqus Shortname}/get_num_replies.js' + query + '"></' + 'script>');
+            })();
+            //]]>
+        </script>
+    {/block:IfDisqusShortname}
+	</div>
+  </body>
+</html>
